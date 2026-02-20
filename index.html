@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>A2 Report — Speculation (Boston Housing)</title>
+  <style>
+    :root{
+      --max: 980px;
+      --fg: #111;
+      --muted:#666;
+      --border:#e6e6e6;
+      --bg:#fff;
+      --card:#fafafa;
+    }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--fg);
+      background:var(--bg);
+      line-height:1.6;
+    }
+    header, main, footer{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:28px 20px;
+    }
+    header{ padding-top:38px; }
+    h1{ font-size:28px; margin:0 0 8px; }
+    .meta{ color:var(--muted); margin:0 0 18px; }
+    .pill{
+      display:inline-block;
+      padding:4px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:var(--card);
+      font-size:13px;
+      color:#222;
+      margin-right:6px;
+    }
+    h2{ margin:26px 0 10px; font-size:20px; }
+    h3{ margin:18px 0 8px; font-size:15px; color:var(--muted); font-weight:650; }
+    ol{ margin:10px 0 0 22px; }
+    .hr{ height:1px; background:var(--border); margin:22px 0; }
+
+    .section-note{
+      color:var(--muted);
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:12px 14px;
+      font-size:14px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:18px;
+      margin-top:14px;
+    }
+    figure{
+      margin:0;
+      border:1px solid var(--border);
+      border-radius:14px;
+      overflow:hidden;
+      background:#fff;
+    }
+    figure img{ width:100%; display:block; }
+    figcaption{
+      padding:12px 14px 14px;
+      border-top:1px solid var(--border);
+    }
+    .cap-title{
+      font-weight:750;
+      margin:0 0 6px;
+      font-size:14px;
+    }
+    .cap{
+      margin:0;
+      color:var(--fg);
+      font-size:14px;
+    }
+    .cap b{ font-weight:750; }
+    .cap small{ color:var(--muted); display:block; margin-top:8px; }
+
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+      margin-top:12px;
+    }
+    .card{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px;
+      background:#fff;
+    }
+    .card p{ margin:0; color:#222; }
+    .card ul{ margin:8px 0 0 18px; color:#222; }
+    .muted{ color:var(--muted); }
+    footer{
+      color:var(--muted);
+      padding-bottom:46px;
+      font-size:13px;
+    }
+
+    @media (min-width: 900px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+      .two-col{ grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <h1>Assignment 2 — Exploratory Data Analysis</h1>
+  <p class="meta">
+    <b>Your Name</b> — your_email@mit.edu<br/>
+    <span class="pill">Subtheme: Speculation</span>
+    <span class="pill">Boston Housing (2000–2023)</span>
+  </p>
+
+  <div class="hr"></div>
+
+  <h2>Overall Analysis Questions</h2>
+  <ol>
+    <li>If “flip horizon” is incomplete, what alternative indicators can reliably represent speculation?</li>
+    <li>How did corporate ownership and owner occupancy diverge over the last two decades?</li>
+    <li>What transaction advantages (e.g., cash purchases) distinguish corporate buyers from individual buyers?</li>
+    <li>Where is speculative acquisition concentrated spatially, and what neighborhoods become “corporate enclaves”?</li>
+    <li>Are “corporate buyers” a single group, or do different investor types target different places?</li>
+    <li>What micro-mechanisms explain different strategies across luxury districts vs student/job-center districts?</li>
+  </ol>
+
+  <div class="hr"></div>
+
+  <div class="section-note">
+    <b>How to read this report:</b> Each figure includes a short <b>Observation</b> (what the chart shows) and
+    <b>Interpretation</b> (why it matters). The analysis proceeds from data audits → macro patterns → spatial clustering → investor segmentation → micro mechanisms.
+  </div>
+</header>
+
+<main>
+  <h2>Discoveries & Insights</h2>
+
+  <div class="grid">
+
+    <!-- 1 -->
+    <figure>
+      <img src="img/1.png" alt="Figure 1" />
+      <figcaption>
+        <p class="cap-title">Fig. 1 — Data Audit: Flip Horizon Missingness</p>
+        <p class="cap">
+          <b>Observation:</b> The flip-horizon field is missing for a large share of transactions, which prevents robust, citywide measurement of holding periods.<br/>
+          <b>Interpretation:</b> Because “time-to-flip” is unreliable at scale, I treat <b>buyer identity</b> (corporate vs individual) and related transaction signals as the primary proxies for speculation.
+          <small>Image: 1.png</small>
+        </p>
+      </figcaption>
+    </figure>
+
+    <!-- 2 -->
+    <figure>
+      <img src="img/2.png" alt="Figure 2" />
+      <figcaption>
+        <p class="cap-title">Fig. 2 — Data Audit: Price Outliers & Robust Statistics</p>
+        <p class="cap">
+          <b>Observation:</b> The price distribution contains extreme outliers (very high-value transactions) that can dominate averages.<br/>
+          <b>Interpretation:</b> To avoid luxury mega-sales distorting conclusions about typical affordability, I use <b>medians</b> (and distributional views) instead of means for most comparisons.
+          <small>Image: 2.png</small>
+        </p>
+      </figcaption>
+    </figure>
+
+    <!-- 3 -->
+    <figure>
+      <img src="img/3.png" alt="Figure 3" />
+      <figcaption>
+        <p class="cap-title">Fig. 3 — Macro Structure: The Corporate–Occupancy Divergence</p>
+        <p class="cap">
+          <b>Observation:</b> Corporate ownership rises while owner-occupancy falls, producing a widening gap over time.<br/>
+          <b>Interpretation:</b> This suggests a structural shift: housing is increasingly treated as an <b>investment vehicle</b> rather than a resident-occupied good, consistent with speculative pressure.
+          <small>Image: 3.png</small>
+        </p>
+      </figcaption>
+    </figure>
+
+    <!-- 4 -->
+    <figure>
+      <img src="img/4.png" alt="Figure 4" />
+      <figcaption>
+        <p class="cap-title">Fig. 4 — Transaction Advantage: Cash Is King</p>
+        <p class="cap">
+          <b>Observation:</b> Corporate buyers are more likely to purchase with all-cash compared to individuals.<br/>
+          <b>Interpretation:</b> Cash works as a <b>market weapon</b> in low-inventory conditions: faster closings and fewer contingencies can outcompete mortgage-dependent households.
+          <small>Image: 4.png</small>
+        </p>
+      </figcaption>
+    </figure>
+
+    <!-- 5 -->
+    <figure>
+      <img src="img/5.png" alt="Figure 5" />
+      <figcaption>
+        <p class="cap-title">Fig. 5 — Timing: Seasonal Asymmetry in Buying Activity</p>
+        <p class="cap">
+          <b>Observation:</b> Individual purchasing declines more sharply in low-activity seasons, while corporate activity remains comparatively steady.<br/>
+          <b>Interpretation:</b> Investors may exploit seasonal windows (less competition, different seller dynamics) to accumulate assets—an opportunistic pattern consistent with speculation.
+          <small>Image: 5.png</small>
+        </p>
+      </figcaption>
+    </figure>
+
+    <!-- 6 -->
+    <figure>
+      <img src="img/6.png" alt="Figure 6" />
+      <figcaption>
+        <p class="cap-title">Fig. 6 — Spatial Pattern: Corporate Purchases Are Not Random</p>
+        <p class="cap">
+          <b>Observation:</b> Corporate transactions cluster in specific districts rather than distributing evenly across the city.<br/>
+          <b>Interpretation:</b> This indicates targeted acquisition—forming <b>corporate enclaves</b>—instead of diffuse “background” investment.
+          <small>Image: 6.png</small>
+        </p>
+      </figcaption>
+    </figure>
+
+    <!-- 7 -->
+    <figure>
+      <img src="img/7.png" alt="Figure 7" />
+      <figcaption>
+        <p class="cap-title">Fig. 7 — Hotspots: Neighborhood Ranking of Corporate Ownership</p>
+        <p class="cap">
+          <b>Observation:</b> Some neighborhoods show substantially higher corporate ownership than others (clear top-tier hotspots).<br/>
+          <b>Interpretation:</b> Investors prioritize places with predictable returns (high rents, high demand, amenity-rich districts), reinforcing spatial inequality in access to premium housing stock.
+          <small>Image: 7.png</small>
+        </p>
+      </figcaption>
+    </figure>
+
+    <!-- 8 -->
+    <figure>
+      <img src="img/8.png" alt="Figure 8" />
+      <figcaption>
+        <p class="cap-title">Fig. 8 — Equity Surprise: Luxury Capture vs “Predatory” Targeting</p>
+        <p class="cap">
+          <b>Observation:</b> The relationship between demographic composition and corporate ownership does not always match the “investors target the poorest areas first” narrative.<br/>
+          <b>Interpretation:</b> A competing mechanism is <b>luxury capture</b>: investors concentrate in high-value districts, which can systematically exclude middle-income households from resource-rich neighborhoods.
+          <small>Image: 8.png</small>
+        </p>
+      </figcaption>
+    </figure>
+
+    <!-- 9 -->
+    <figure>
+      <img src="img/9.png" alt="Figure 9" />
+      <figcaption>
+        <p class="cap-title">Fig. 9 — Investor Segmentation: Not All “Corporate Buyers” Are the Same</p>
+        <p class="cap">
+          <b>Observation:</b> When corporate buyers are stratified by investor type/size, different neighborhoods show different mixes (e.g., institutional vs small LLCs).<br/>
+          <b>Interpretation:</b> Policy and interpretation should be <b>typed</b>: large institutions and small LLCs can represent distinct strategies and impacts.
+          <small>Image: 9.png</small>
+        </p>
+      </figcaption>
+    </figure>
+
+    <!-- 10 -->
+    <figure>
+      <img src="img/10.png" alt="Figure 10" />
+      <figcaption>
+        <p class="cap-title">Fig. 10 — Premium Stock Capture: Corporate Purchases Skew Higher</p>
+        <p class="cap">
+          <b>Observation:</b> Corporate acquisitions tend to occur at higher price levels than individual purchases (distribution shifts upward).<br/>
+          <b>Interpretation:</b> This challenges the “bottom-feeding” assumption and supports a model where investors compete for—and remove—higher-quality stock from owner-occupant access.
+          <small>Image: 10.png</small>
+        </p>
+      </figcaption>
+    </figure>
+
+    <!-- 11 -->
+    <figure>
+      <img src="img/11.png" alt="Figure 11" />
+      <figcaption>
+        <p class="cap-title">Fig. 11 — Micro Mechanism A: The “Safe-Deposit-Box” Pattern (Luxury Districts)</p>
+        <p class="cap">
+          <b>Observation:</b> In high-end districts, ownership patterns can be consistent with low-utilization/absentee holding rather than purely occupancy-driven demand.<br/>
+          <b>Interpretation:</b> Housing behaves like an <b>asset vault</b>: holding for appreciation can reduce effective supply and amplify price pressure even without high resident turnover.
+          <small>Image: 11.png</small>
+        </p>
+      </figcaption>
+    </figure>
+
+    <!-- 12 -->
+    <figure>
+      <img src="img/12.png" alt="Figure 12" />
+      <figcaption>
+        <p class="cap-title">Fig. 12 — Micro Mechanism B: The “Student Housing Machine” (University/Job Centers)</p>
+        <p class="cap">
+          <b>Observation:</b> Near universities and major job hubs, investment patterns align with high-turnover rental markets and steady demand.<br/>
+          <b>Interpretation:</b> Investors can optimize <b>cash-flow extraction</b> through unit reconfiguration, rent-by-room dynamics, and demand inelasticity—distinct from luxury “asset vault” behavior.
+          <small>Image: 12.png</small>
+        </p>
+      </figcaption>
+    </figure>
+
+    <!-- 13 -->
+    <figure>
+      <img src="img/13.png" alt="Figure 13" />
+      <figcaption>
+        <p class="cap-title">Fig. 13 — Synthesis: Two Strategies, One Dispossession</p>
+        <p class="cap">
+          <b>Observation:</b> Across the preceding figures, corporate influence appears both structural (ownership/occupancy divergence) and spatial (hotspots, segmentation).<br/>
+          <b>Interpretation:</b> Speculation expresses as <b>two differentiated strategies</b>: (1) premium holding in luxury enclaves and (2) cash-flow extraction in high-demand renter submarkets—both tightening access for resident households.
+          <small>Image: 13.png</small>
+        </p>
+      </figcaption>
+    </figure>
+
+  </div>
+
+  <div class="hr"></div>
+
+  <h2>Summary</h2>
+  <div class="two-col">
+    <div class="card">
+      <h3>Key Findings</h3>
+      <ul>
+        <li>Flip-horizon incompleteness shifts the analysis toward buyer identity and transaction signals as speculation proxies.</li>
+        <li>Corporate ownership and owner-occupancy diverge over time, consistent with housing financialization.</li>
+        <li>Corporate buyers show a liquidity advantage (cash), reshaping competitive market rules.</li>
+        <li>Corporate activity is spatially clustered, creating neighborhood-level hotspots and enclaves.</li>
+        <li>Investor types appear heterogeneous, implying different mechanisms across places.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Limitations & Next Steps</h3>
+      <ul>
+        <li><b>Data linkage:</b> Missing flip-horizon limits citywide holding-period/profit estimates.</li>
+        <li><b>Entity resolution:</b> “LLC” does not uniquely identify institutional ownership; linking LLC networks would strengthen claims.</li>
+        <li><b>Absentee ownership:</b> Add mailing address / assessment records to test the “asset vault” hypothesis directly.</li>
+        <li><b>Displacement:</b> Join eviction, rent, or mobility datasets to quantify who is most affected.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="hr"></div>
+
+  <h2>Data & Methods (Brief)</h2>
+  <p class="muted">
+    This report uses (1) transaction-level sales data (2000–2023) and (2) neighborhood-level ownership/occupancy indicators (2004–2024).
+    Key transformations include missingness checks, robust statistics (medians), grouping by buyer type, temporal aggregation for seasonality,
+    spatial mapping, and investor segmentation by type/size (where available).
+  </p>
+
+</main>
+
+<footer>
+  <div class="hr"></div>
+  <div>© Your Name — A2 Report (Speculation) — Last updated: 2026-02-19</div>
+</footer>
+
+</body>
+</html>
