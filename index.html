@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment 2 Example - Shengtao Shen</title>
+    <title>Exploratory Data Analysis - Shengtao Shen</title>
     <style>
         body {
-            font-family: 'Georgia', serif; /* Serif font for a more academic paper look */
+            font-family: 'Georgia', serif; /* Classic academic serif font */
             line-height: 1.6;
             color: #333;
             background-color: #fff;
@@ -37,7 +37,7 @@
             font-size: 16px;
             margin-bottom: 30px;
         }
-        ul {
+        ul, ol {
             margin-bottom: 25px;
         }
         li {
@@ -65,9 +65,10 @@
 <body>
 
 <div class="container">
-    <h1>Assignment 2 Example</h1>
+    <h1>Exploratory Data Analysis</h1>
     <div class="author-info">
-        Shengtao Shen, MIT 6.894<br>
+        Shengtao Shen<br>
+        Subtheme: Speculation<br>
         sstheo@mit.edu
     </div>
 
@@ -83,7 +84,7 @@
         <li>Is there a specific strategic pattern to the geographic expansion of capital in Boston?</li>
         <li>Are corporate landlords preying on vulnerable communities, or is there an unexpected trend?</li>
         <li>Why can't ordinary families compete with corporations? Is it an issue of price or transaction means?</li>
-        <li>What are the broader social consequences of housing financialization on Boston's residents?</li>
+        <li>What are the macro consequences of capital invasion, and how do profit models adapt to different urban spaces?</li>
     </ol>
 
     <h2>Discoveries & Insights</h2>
@@ -94,8 +95,7 @@
         <img src="img/1.png" alt="The Data Void">
     </div>
     <div class="analysis-block">
-        <p><strong>Observation:</strong> In the initial exploration of the residential dataset, I created a calculated field, <em>Is_Flip_Data_Missing</em>, to audit the integrity of the "Flip Horizon" attribute—a key metric for measuring the duration between consecutive property sales. The visualization reveals a significant data quality issue: approximately 67% of the 49,000+ residential transaction records lack this information.</p>
-        <p><strong>Interpretation:</strong> This high rate of missingness suggests a major limitation in the dataset's ability to track short-term speculative "flipping" behavior, as many transactions cannot be chronologically linked to a prior sale. Consequently, while the dataset remains valuable, any analysis regarding the "speed" of investment cycles must be treated as a subset rather than a comprehensive market overview. This realization shifts my focus toward "Buyer Identity" (Corporate LLC vs. Individual) as a much more reliable proxy for analyzing corporate influence.</p>
+        <p><strong>Observation & Interpretation:</strong> In the initial exploration of the residential dataset, I created a calculated field, <em>Is_Flip_Data_Missing</em>, to audit the integrity of the "Flip Horizon" attribute—a key metric for measuring the duration between consecutive property sales. The visualization reveals a significant data quality issue: approximately 67% of the 49,000+ residential transaction records lack this information. This high rate of missingness suggests a major limitation in the dataset's ability to track short-term speculative "flipping" behavior, as many transactions cannot be chronologically linked to a prior sale. Consequently, while the dataset remains valuable, any analysis regarding the "speed" of investment cycles must be treated as a subset rather than a comprehensive market overview. This realization shifts my focus toward "Buyer Identity" (Corporate LLC vs. Individual) as a much more reliable proxy for analyzing corporate influence.</p>
     </div>
 
     <p>Before proceeding with price analyses across these buyer identities, we must also check for outliers that could skew our understanding of neighborhood affordability.</p>
@@ -104,8 +104,7 @@
         <img src="img/2.png" alt="The Outlier Check">
     </div>
     <div class="analysis-block">
-        <p><strong>Observation:</strong> A scatter plot of transaction prices over time reveals the presence of extreme outliers, with the top 1% of transactions exceeding $14.8 million and some individual sales surpassing $100 million.</p>
-        <p><strong>Interpretation:</strong> These values likely represent large-scale commercial-residential complexes rather than typical single-family homes. To prevent these luxury mega-sales from skewing the analysis of housing affordability for average residents, I will prioritize median prices over mean prices in all subsequent comparisons.</p>
+        <p><strong>Observation & Interpretation:</strong> A scatter plot of transaction prices over time reveals the presence of extreme outliers, with the top 1% of transactions exceeding $14.8 million and some individual sales surpassing $100 million. These values likely represent large-scale commercial-residential complexes rather than typical single-family homes. To prevent these luxury mega-sales from skewing the analysis of housing affordability for average residents, I will prioritize median prices over mean prices in all subsequent comparisons.</p>
     </div>
 
     <p>After addressing our data quality issues, we can begin to explore the fundamental changes in Boston's housing structure. This dual-axis chart visualizes the macro takeover over the past two decades.</p>
@@ -114,8 +113,7 @@
         <img src="img/3.png" alt="The Great Divergence">
     </div>
     <div class="analysis-block">
-        <p><strong>Observation:</strong> This dual-axis line chart tracks the structural transformation of Boston’s housing market. I plotted the Corporate Ownership Rate against the Owner Occupancy Rate. The visualization reveals a striking inverse relationship: while corporate ownership has steadily climbed—accelerating noticeably after 2020—the rate of owner-occupied homes has been in a continuous decline.</p>
-        <p><strong>Interpretation:</strong> The divergence of these two lines confirms a systemic "financialization" of the local housing market. Institutional capital is competing directly with individual homebuyers, displacing families from homeownership. The post-2020 spike in corporate ownership indicates that the pandemic likely created a unique buying opportunity for investors.</p>
+        <p><strong>Observation & Interpretation:</strong> This dual-axis line chart tracks the structural transformation of Boston’s housing market. I plotted the Corporate Ownership Rate against the Owner Occupancy Rate. The visualization reveals a striking inverse relationship: while corporate ownership has steadily climbed—accelerating noticeably after 2020—the rate of owner-occupied homes has been in a continuous decline. The divergence of these two lines confirms a systemic "financialization" of the local housing market. Institutional capital is competing directly with individual homebuyers, displacing families from homeownership. The post-2020 spike in corporate ownership indicates that the pandemic likely created a unique buying opportunity for investors.</p>
     </div>
 
     <p>To further understand how these corporations operate differently from regular residents, we evaluate their seasonal purchasing patterns.</p>
@@ -124,8 +122,7 @@
         <img src="img/4.png" alt="The Seasonal Pulse">
     </div>
     <div class="analysis-block">
-        <p><strong>Observation:</strong> This line chart compares the seasonal purchasing patterns of Corporate buyers versus Individual buyers. Individual activity drops precipitously in the winter (hitting lows in Jan/Feb). In contrast, Corporate buyers remain surprisingly active in December (10.4% of their annual volume) and January, significantly outperforming the individual market trend during these months.</p>
-        <p><strong>Interpretation:</strong> Corporate capital operates with a different logic than household buyers. While families are constrained by the school year and weather, investors appear to be opportunistic "bottom fishers," utilizing the winter lull to acquire properties with less competition. The December spike may also be driven by year-end tax incentives.</p>
+        <p><strong>Observation & Interpretation:</strong> This line chart compares the seasonal purchasing patterns of Corporate buyers versus Individual buyers. Individual activity drops precipitously in the winter (hitting lows in Jan/Feb). In contrast, Corporate buyers remain surprisingly active in December (10.4% of their annual volume) and January, significantly outperforming the individual market trend during these months. Corporate capital operates with a different logic than household buyers. While families are constrained by the school year and weather, investors appear to be opportunistic "bottom fishers," utilizing the winter lull to acquire properties with less competition. The December spike may also be driven by year-end tax incentives.</p>
     </div>
 
     <p>We now focus our attention on where this corporate capital is geographically expanding. The following geospatial map details the enclaves of corporate ownership.</p>
@@ -134,7 +131,7 @@
         <img src="img/5.png" alt="The Corporate Enclaves">
     </div>
     <div class="analysis-block">
-        <p><strong>Observation:</strong> This geospatial visualization maps every residential transaction in the dataset, color-coded by buyer type (Red = Corporate LLC, Gray = Individual). While individual purchases are scattered evenly across residential suburbs like West Roxbury and Hyde Park, corporate acquisitions are densely clustered in specific zones—most notably the South Boston Waterfront (Seaport), Fenway, and Downtown.</p>
+        <p><strong>Observation:</strong> This geospatial visualization maps every residential transaction in the dataset, color-coded by buyer type (Red = Corporate LLC, Blue = Individual). While individual purchases are scattered evenly across residential suburbs like West Roxbury and Hyde Park, corporate acquisitions are densely clustered in specific zones—most notably the South Boston Waterfront (Seaport), Fenway, and Downtown.</p>
         <p><strong>Interpretation:</strong> The map confirms that corporate investment is highly targeted. These "red zones" correspond perfectly with Boston's "Innovation Districts" and areas of recent luxury zoning upscaling. It visually demonstrates how institutional capital is reshaping the geography of the city, effectively creating "corporate enclaves."</p>
     </div>
 
@@ -144,8 +141,7 @@
         <img src="img/6.png" alt="Neighborhood Ranking">
     </div>
     <div class="analysis-block">
-        <p><strong>Observation:</strong> Filtering for 2024 data and ranking neighborhoods reveals a distinct pattern. The South Boston Waterfront (38%), Fenway (36%), and Downtown (34%) emerge as the primary hotspots for corporate ownership. In contrast, residential neighborhoods like Hyde Park and West Roxbury have rates below 15%.</p>
-        <p><strong>Interpretation:</strong> Capital is strategically concentrating in high-density, high-rent markets where investors can maximize yields from transient populations, rather than spreading evenly across the city.</p>
+        <p><strong>Observation & Interpretation:</strong> Filtering for 2024 data and ranking neighborhoods reveals a distinct pattern. The South Boston Waterfront (38%), Fenway (36%), and Downtown (34%) emerge as the primary hotspots for corporate ownership. In contrast, residential neighborhoods like Hyde Park and West Roxbury have rates below 15%. Capital is strategically concentrating in high-density, high-rent markets where investors can maximize yields from transient populations, rather than spreading evenly across the city.</p>
     </div>
 
     <p>Next, we explore the socioeconomic factors—specifically race—to test the hypothesis of "predatory equity" (i.e., whether corporations predominantly target vulnerable minority communities).</p>
@@ -154,8 +150,7 @@
         <img src="img/7.png" alt="The Unexpected Trend">
     </div>
     <div class="analysis-block">
-        <p><strong>Observation:</strong> I plotted the Minority Population % (Black and Hispanic) against the Corporate Ownership Rate for each neighborhood. To my surprise, the linear trend line reveals a negative correlation. Neighborhoods with the highest concentrations of minority residents (e.g., Mattapan, Roxbury, Hyde Park) exhibit relatively lower overall rates of corporate ownership compared to predominantly white, wealthier districts like the Seaport.</p>
-        <p><strong>Interpretation:</strong> This counter-intuitive finding challenges the narrative that corporate investment is primarily driven by buying up "cheap" distressed assets in marginalized communities. Instead, the data supports a "Luxury Capture" model: institutional capital is aggressively competing for the most valuable, high-rent housing stock. While minority neighborhoods are not the *primary* overall targets, this raises a different equity concern: the systemic exclusion of working-class families from the city's most resource-rich neighborhoods.</p>
+        <p><strong>Observation & Interpretation:</strong> I plotted the Minority Population % (Black and Hispanic) against the Corporate Ownership Rate for each neighborhood. To my surprise, the linear trend line reveals a negative correlation. Neighborhoods with the highest concentrations of minority residents (e.g., Mattapan, Roxbury, Hyde Park) exhibit relatively lower overall rates of corporate ownership compared to predominantly white, wealthier districts like the Seaport. This counter-intuitive finding challenges the narrative that corporate investment is primarily driven by buying up "cheap" distressed assets in marginalized communities. Instead, the data supports a "Luxury Capture" model: institutional capital is aggressively competing for the most valuable, high-rent housing stock. While minority neighborhoods are not the primary overall targets, this raises a different equity concern: the systemic exclusion of working-class families from the city's most resource-rich neighborhoods.</p>
     </div>
 
     <p>However, treating all corporate buyers as a monolith hides a crucial detail. We dissect corporate purchases by investor size to see who exactly is buying where.</p>
@@ -164,8 +159,7 @@
         <img src="img/8.png" alt="Investor Segmentation">
     </div>
     <div class="analysis-block">
-        <p><strong>Observation:</strong> This 100% stacked bar chart dissects corporate purchases by investor size across neighborhoods. A stark spatial bifurcation emerges. Institutional investors (Large REITs, universities, private equity) heavily dominate Longwood, the South End, Downtown, and the Seaport. In sharp contrast, working-class neighborhoods like Dorchester, Mattapan, and East Boston are overwhelmingly targeted by Small and Medium LLCs.</p>
-        <p><strong>Interpretation:</strong> This distinction proves there are parallel gentrification engines at work. There is an "Institutional Expansion" in the core (with Longwood reflecting medical/academic acquisitions), and a completely different "Grassroots Speculation" pressure in the outer boroughs driven by smaller flippers extracting rent from working-class communities.</p>
+        <p><strong>Observation & Interpretation:</strong> This 100% stacked bar chart dissects corporate purchases by investor size across neighborhoods. A stark spatial bifurcation emerges. Institutional investors (Large REITs, universities, private equity) heavily dominate Longwood, the South End, Downtown, and the Seaport. In sharp contrast, working-class neighborhoods like Dorchester, Mattapan, and East Boston are overwhelmingly targeted by Small and Medium LLCs. This distinction proves there are parallel gentrification engines at work. There is an "Institutional Expansion" in the core, and a completely different "Grassroots Speculation" pressure in the outer boroughs driven by smaller flippers extracting rent from working-class communities.</p>
     </div>
 
     <p>Having established where and who, we now ask: why can't ordinary families compete with these corporations? We first look at the price distribution.</p>
@@ -174,8 +168,7 @@
         <img src="img/9.png" alt="Luxury Capture">
     </div>
     <div class="analysis-block">
-        <p><strong>Observation:</strong> This box plot compares the distribution of purchase prices between Corporate LLCs and Individual home buyers (filtered to exclude >$2M outliers). A clear price premium is evident. The median purchase price for Corporate buyers is $735,000, which is substantially higher than the median for Individual buyers at $562,500.</p>
-        <p><strong>Interpretation:</strong> This visualization conclusively debunks the "bottom-feeding" myth. Corporations are not just buying distressed properties; they are engaging in "Luxury Capture." They are highly capitalized and are systematically outbidding ordinary families for premium properties, actively removing the most desirable housing stock from the homeowner market.</p>
+        <p><strong>Observation & Interpretation:</strong> This box plot compares the distribution of purchase prices between Corporate LLCs and Individual home buyers (filtered to exclude >$2M outliers). A clear price premium is evident. The median purchase price for Corporate buyers is $735,000, which is substantially higher than the median for Individual buyers at $562,500. This visualization conclusively debunks the "bottom-feeding" myth. Corporations are not just buying distressed properties; they are engaging in "Luxury Capture." They are highly capitalized and are systematically outbidding ordinary families for premium properties, actively removing the most desirable housing stock from the homeowner market.</p>
     </div>
 
     <p>Beyond just having higher budgets, corporations utilize a transaction method that ordinary families simply cannot match.</p>
@@ -184,53 +177,43 @@
         <img src="img/10.png" alt="Cash is King">
     </div>
     <div class="analysis-block">
-        <p><strong>Observation:</strong> This lollipop chart visualizes the stark difference in payment methods. The data reveals a massive asymmetry: roughly 56.8% of Corporate purchases are executed as all-cash transactions. In sharp contrast, only about 29.9% of Individual buyers purchase with cash.</p>
-        <p><strong>Interpretation:</strong> This is the final "fatal blow" to housing accessibility for the middle class. Sellers overwhelmingly prefer "clean," all-cash offers that carry no mortgage contingencies. Corporate LLCs are weaponizing their liquidity, deploying a method of transaction that working-class families structurally cannot compete with.</p>
+        <p><strong>Observation & Interpretation:</strong> This lollipop chart visualizes the stark difference in payment methods. The data reveals a massive asymmetry: roughly 56.8% of Corporate purchases are executed as all-cash transactions. In sharp contrast, only about 29.9% of Individual buyers purchase with cash. This is the final "fatal blow" to housing accessibility for the middle class. Sellers overwhelmingly prefer "clean," all-cash offers that carry no mortgage contingencies. Corporate LLCs are weaponizing their liquidity, deploying a method of transaction that working-class families structurally cannot compete with.</p>
     </div>
 
-    <p>For the smaller LLCs operating in the outer boroughs, we analyze the age of the buildings they target to uncover their exact business model.</p>
-
-    <div class="chart-container">
-        <img src="img/11.png" alt="The Value-Add Hunters">
-    </div>
-    <div class="analysis-block">
-        <p><strong>Observation:</strong> This distribution chart maps the percentage of purchases by building age. We observe a massive, disproportionate spike in corporate acquisitions for extremely old housing stock—specifically multi-family homes built between 1900 and 1920.</p>
-        <p><strong>Interpretation:</strong> These older buildings (like traditional triple-deckers) have historically served as Naturally Occurring Affordable Housing (NOAH). LLCs execute cosmetic renovations ("flipping") on these vintage properties to drastically upcharge rents, effectively extracting the last layer of affordable housing from the market.</p>
-    </div>
-
-    <p>Finally, we examine the broader social consequences of this speculative behavior. Who is ultimately sacrificed for these financial gains? We first look at the student population.</p>
+    <p>To understand the true social cost of this capital invasion, we must look at the macro consequences of these purchasing tactics over time. Housing is fundamentally transforming its core purpose.</p>
 
     <div class="chart-container">
-        <img src="img/12.png" alt="The Student Housing Machine">
+        <img src="img/11.png" alt="The Rise of Absenteeism">
     </div>
     <div class="analysis-block">
-        <p><strong>Observation:</strong> Plotting the percentage of college students against corporate ownership reveals a strong positive correlation. Neighborhoods like Fenway and Allston exhibit the highest overlaps.</p>
-        <p><strong>Interpretation:</strong> Capital has keenly identified Boston's student population as a lucrative cash cow. Investors convert traditional housing into high-density "student dorms," charging exorbitant rents by the bedroom. This hyper-commodification drastically raises the rent floor across the board.</p>
+        <p><strong>Observation & Interpretation:</strong> This stacked area chart illustrates "The Rise of Absenteeism." By visualizing the ownership proportions over the past 20 years, we observe that the foundational "owner-occupancy" area is being continuously squeezed and compressed. Meanwhile, the upper areas representing "corporate ownership" and "non-owner-occupied individuals" are rapidly expanding. This powerfully depicts the macroscopic consequence of capital invasion: housing has been thoroughly financialized. The data visually demonstrates how residential properties in Boston have transitioned from being fundamental human "Shelters" into external capital "Portfolio Assets," where houses are no longer utilized primarily for living.</p>
     </div>
 
-    <p>If student areas are over-utilized, we find the exact opposite phenomenon occurring in the luxury institutional core.</p>
+    <p>Diving deeper into specific demographics and geographies, we see that capital takes on vastly different physical forms and profit models depending on the urban space it occupies. The first is a strategy of hoarding.</p>
 
     <div class="chart-container">
-        <img src="img/13.png" alt="The Safe Deposit Box Paradox">
+        <img src="img/12.png" alt="Strategy A: The Safe Deposit Box Paradox">
     </div>
     <div class="analysis-block">
-        <p><strong>Observation:</strong> Addressing the phenomenon of "Wealth Towers," this scatter plot compares vacancy rates with corporate ownership. A cruel paradox emerges: in highly financialized, high-income districts like the Seaport, surging corporate ownership is accompanied by alarming vacancy rates.</p>
-        <p><strong>Interpretation:</strong> These luxury units do not alleviate the housing shortage. Instead, they function as "Safe Deposit Boxes" for absentee owners to park their capital, exposing the extreme inefficiency and resource wastefulness of speculative development.</p>
+        <p><strong>Observation & Interpretation:</strong> Focusing on high-density, high-net-worth neighborhoods like the Seaport and Downtown, this scatter trend plot reveals Strategy A: Asset Hoarding. There is an abnormal, positive correlation between corporate ownership and housing vacancy rates. In these ultra-premium areas, speculators do not rely on generating rental cash flow. Instead, they hoard properties as "Safe Deposit Boxes"—hard assets used to hedge against inflation and park global wealth. These idle, luxury high-rises exacerbate artificial supply shortages, proving that new construction in these specific zones does not necessarily equate to more available housing for residents.</p>
     </div>
 
-    <p>The ultimate human toll of this financialization is visible when we look at the displacement of traditional households over time.</p>
+    <p>Conversely, in neighborhoods with different physical architectures and demographics, capital abandons hoarding in favor of extreme cash flow generation.</p>
 
     <div class="chart-container">
-        <img src="img/14.png" alt="The Displacement of Families">
+        <img src="img/13.png" alt="Strategy B: The Student Housing Machine">
     </div>
     <div class="analysis-block">
-        <p><strong>Observation:</strong> By tracking the percentage of the population under 18 years old against the rise of LLC ownership from 2004 to 2024, a clear negative correlation appears. In neighborhoods heavily captured by corporate capital, the population of minors is experiencing a steep decline.</p>
-        <p><strong>Interpretation:</strong> Boston is increasingly becoming an exclusionary, "childless" investment platform. The financialization of the housing market is systematically displacing traditional family structures, making it impossible for ordinary households to lay down roots in the city.</p>
+        <p><strong>Observation & Interpretation:</strong> Shifting our analysis to off-campus neighborhoods like Allston and Fenway—which are characterized by large student populations and multi-family wooden structures (triple-deckers)—we observe Strategy B: High-Frequency Harvesting. This multi-line chart shows that in these areas, capital optimizes for extreme cash flow rather than vacancy. By acquiring and carving up traditional family homes into micro-units rented out by the bed, investors create a "Student Housing Machine" that drastically inflates the rent floor. </p>
+        <p><em>Notably, Longwood emerges as a distinct outlier in this spatial analysis. Its extremely high institutional ownership rate is not driven by typical residential speculation, but rather by medical and educational land-use expansion (hospitals and university facilities). This outlier highlights how capital adapts its physical footprint and profit mechanisms to the highly specific spatial and institutional attributes of the city.</em></p>
     </div>
 
-    <h2>Summary</h2>
+    <h2>Conclusion</h2>
     <p>
-        In Boston, housing financialization is driving a systemic crisis of displacement. In this analysis, we have identified two distinct mechanisms of corporate capture: "Asset Accumulation" by large institutions building vacant wealth towers in the urban core, and "Grassroots Speculation" by small LLCs targeting historic affordable housing with all-cash offers in the outer boroughs. Factors including massive cash liquidity and the targeting of student demographics have created an intensely exclusionary market. While these dynamics explain how individuals are losing bidding wars, the resulting social costs—soaring vacancy rates and the displacement of families—cannot be perfectly explained without looking at the broader regulatory environment. To truly address this crisis, policy interventions such as a Local Option Transfer Fee and the Tenant Opportunity to Purchase Act (TOPA) are urgently needed to restore local control.
+        In Boston, housing financialization is driving a systemic crisis that fundamentally alters the city's socioeconomic landscape. Through this exploratory data analysis, we have uncovered that corporate capital operates not as a monolith, but through highly adaptive spatial strategies. In the urban core, large institutions engage in "Asset Hoarding," utilizing luxury developments as vacant financial safe havens. Simultaneously, in the outer boroughs, smaller LLCs deploy "High-Frequency Harvesting," using massive cash liquidity to convert historic affordable housing into hyper-commodified rental units. 
+    </p>
+    <p>
+        These mechanisms completely rig the market against ordinary families, structurally preventing them from competing in bidding wars due to a lack of all-cash purchasing power. The macroscopic consequence is clear: Boston's residential properties have been transformed from essential human shelters into external portfolio assets. Understanding these distinct geographic patterns and profit models is critical. It suggests that blanket housing policies will be ineffective; to truly address this crisis, targeted interventions—such as a Local Option Transfer Fee to curb luxury hoarding and the Tenant Opportunity to Purchase Act (TOPA) to prevent neighborhood-level speculation—must be implemented to return local control to Boston's residents.
     </p>
 
 </div>
